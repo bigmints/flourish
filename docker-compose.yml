@@ -1,0 +1,22 @@
+services:
+  flourish:
+    build: .
+    image: flourish:local
+    restart: unless-stopped
+    init: true
+    ports:
+      - "127.0.0.1:3210:3000"
+    environment:
+      FLOURISH_DATA_DIR: /app/data
+      FLOURISH_BASE_CURRENCY: ${FLOURISH_BASE_CURRENCY:-AED}
+      FLOURISH_TIMEZONE: ${FLOURISH_TIMEZONE:-Asia/Dubai}
+      FLOURISH_ALLOWED_ORIGINS: ${FLOURISH_ALLOWED_ORIGINS:-}
+      FLOURISH_MAX_UPLOAD_MB: ${FLOURISH_MAX_UPLOAD_MB:-20}
+    volumes:
+      - /opt/flourish/data:/app/data
+    healthcheck:
+      test: ["CMD", "wget", "-q", "-O", "-", "http://127.0.0.1:3000/api/v1/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s

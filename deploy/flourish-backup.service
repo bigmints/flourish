@@ -1,0 +1,19 @@
+[Unit]
+Description=Back up the Flourish SQLite database
+After=flourish.service
+
+[Service]
+Type=oneshot
+User=flourish
+Group=flourish
+WorkingDirectory=/opt/flourish/app
+EnvironmentFile=/opt/flourish/.env
+Environment=FLOURISH_BACKUP_DIR=/opt/flourish/backups
+Environment=FLOURISH_BACKUP_RETENTION_DAYS=30
+ExecStart=/usr/bin/node /opt/flourish/app/scripts/backup.mjs
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+ReadWritePaths=/opt/flourish/data /opt/flourish/backups

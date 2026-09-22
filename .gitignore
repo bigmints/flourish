@@ -1,0 +1,16 @@
+node_modules/
+.next/
+data/
+backups/
+test-results/
+playwright-report/
+.playwright-cli/
+coverage/
+.env
+.env.local
+*.tsbuildinfo
+*.db
+*.db-shm
+*.db-wal
+__pycache__/
+*.pyc

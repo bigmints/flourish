@@ -1,0 +1,23 @@
+[Unit]
+Description=Tailnet-only proxy for Flourish
+After=network-online.target tailscaled.service flourish.service
+Wants=network-online.target tailscaled.service flourish.service
+
+[Service]
+Type=simple
+User=flourish
+Group=flourish
+WorkingDirectory=/opt/flourish/app
+Environment=HOME=/tmp
+ExecStart=/usr/bin/caddy run --config /opt/flourish/app/deploy/Caddyfile.tailnet --adapter caddyfile
+ExecReload=/usr/bin/caddy reload --config /opt/flourish/app/deploy/Caddyfile.tailnet --adapter caddyfile --force
+Restart=on-failure
+RestartSec=5s
+UMask=0027
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectHome=true
+ProtectSystem=strict
+
+[Install]
+WantedBy=multi-user.target

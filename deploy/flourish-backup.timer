@@ -1,0 +1,11 @@
+[Unit]
+Description=Nightly Flourish backup
+
+[Timer]
+OnCalendar=*-*-* 02:30:00 Asia/Dubai
+Persistent=true
+RandomizedDelaySec=10m
+Unit=flourish-backup.service
+
+[Install]
+WantedBy=timers.target
