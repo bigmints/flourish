@@ -20,7 +20,7 @@ port_env = "PORT"
 
 [health]
 type = "http"
-path = "/"
+path = "/api/v1/health"
 timeout_seconds = 90
 
 [persistence]
