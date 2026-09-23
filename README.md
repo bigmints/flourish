@@ -1,5 +1,7 @@
 # Flourish
 
+[![Launch on PicoRunner](https://picorunner.com/badges/launch.svg)](https://picorunner.com/launch/?repository=https%3A%2F%2Fgithub.com%2Fbigmints%2Fflourish)
+
 Flourish is a self-hosted personal finance workspace for everyday spending,
 savings goals, investments, loans, and recurring payments. Your financial data
 stays in a local SQLite database.

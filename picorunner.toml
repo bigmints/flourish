@@ -1,0 +1,27 @@
+schema = 1
+name = "Flourish"
+
+[runtime]
+kind = "node"
+version = "22.22"
+package_manager = "pnpm"
+workspace = "."
+
+[[setup.steps]]
+kind = "dependencies"
+locked = true
+
+[launch]
+command = ["pnpm", "run", "dev"]
+working_directory = "."
+host = "127.0.0.1"
+port = 3210
+port_env = "PORT"
+
+[health]
+type = "http"
+path = "/"
+timeout_seconds = 90
+
+[persistence]
+paths = ["data", "backups"]
